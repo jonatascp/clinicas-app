@@ -9,7 +9,7 @@ module.exports = {
     },
     devServer: {
         port: 8080,
-        contentBase: './public'
+        contentBase: './public',
     },
     resolve: {
         extensions: ['', '.js', '.jsx'],
@@ -35,7 +35,11 @@ module.exports = {
         }, {
             // test: /\.woff|.woff2|.ttf|.eof|.svg*.*$/,
             // loader: 'file'
-            test: /\.woff|.woff2|.ttf|.eof|.svg*.*$/, loader: 'file?limit=100000'
+            
+            //test: /\.woff|.woff2|.ttf|.eof|.svg*.*$/, loader: 'file?limit=100000'
+
+            test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/
+            , loader: 'file?limit=100000'
         }]
     }
 }
