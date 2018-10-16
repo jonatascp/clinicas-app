@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
+import PageHeader from '../template/pageHeader'
+
 export default class Clinicas extends Component {
     render() {
         return (
             <div>
-                <h1>Clínicas</h1>
+                <PageHeader name='Clínicas' small='Cadastro'></PageHeader>
             </div>
         )
     }
