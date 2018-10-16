@@ -2,9 +2,14 @@ import 'modules/bootstrap/dist/css/bootstrap.min.css'
 import 'modules/font-awesome/css/font-awesome.min.css'
 
 import React from 'react'
+import Clinicas from '../clinicas/clinicas'
+import About from '../about/about'
+import Menu from '../template/menu'
 
 export default props => (
     <div className='container'>
-        <h1>Teste 2</h1>
+        <Menu />
+        <Clinicas />
+        <About />
     </div>
 )
