@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import PageHeader from '../template/pageHeader'
 import ClinicasForm from './clinicasForm'
 import ClinicasList from './clinicasList'
+
+const URL = 'http://localhost:3003/api/clinicas'
 
 export default class Clinicas extends Component {
     
@@ -15,7 +18,9 @@ export default class Clinicas extends Component {
     }
 
     handleAdd() {
-        console.log(this.state.clinicName)
+        const name = this.state.clinicName
+        console.log('Add Name:' + name)
+        axios.post(URL, { name }).then(resp => console.log('Funcionou!'))
     }
 
     handleChange(e) {
