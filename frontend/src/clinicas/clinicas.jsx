@@ -15,16 +15,28 @@ export default class Clinicas extends Component {
 
         this.handleAdd = this.handleAdd.bind(this)
         this.handleChange = this.handleChange.bind(this)
+
+        this.refresh()
+    }
+
+    refresh() {
+        axios.get(`${URL}?sort=-createdAt`)
+            .then(resp => this.setState({ ...this.state, clinicName: '', list: resp.data})) 
     }
 
     handleAdd() {
         const name = this.state.clinicName
         console.log('Add Name:' + name)
-        axios.post(URL, { name }).then(resp => console.log('Funcionou!'))
+        axios.post(URL, { name }).then(resp => this.refresh())
     }
 
     handleChange(e) {
         this.setState({...this.state, clinicName: e.target.value })
+    }
+
+    handleRemove(clinica) {
+        axios.delete(`${URL}/${clinica._id}`)
+            .then(resp => this.refresh())
     }
     
     render() {
@@ -34,7 +46,7 @@ export default class Clinicas extends Component {
                 <ClinicasForm clinicName={this.state.clinicName}
                     handleChange={this.handleChange}
                     handleAdd={this.handleAdd} />
-                <ClinicasList />
+                <ClinicasList list={this.state.list} />
             </div>
         )
     }
